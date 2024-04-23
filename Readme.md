@@ -1,8 +1,19 @@
 # maven build
+````
 mvn clean install
-
-# compose up
+````
+# Running in Docker Containers
+## Start all containers
+````
 docker-compose up -d
+````
 
-# Monitor
+## Stop all containers
+````
+docker-compose down
+````
+
+## Monitor logs
+````
 docker-compose logs -f
+````
