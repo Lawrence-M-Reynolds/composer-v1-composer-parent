@@ -2,7 +2,7 @@ version: '2.1'
 
 services:
   facade:
-    build: ../composer-facade
+    build: composer-v1-facade
     mem_limit: 512m
     ports:
       - "8080:8080"
@@ -10,7 +10,7 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
 
   composition:
-    build: ../composition-service
+    build: composer-v1-composition-service
     mem_limit: 512m
     environment:
       - SPRING_PROFILES_ACTIVE=docker

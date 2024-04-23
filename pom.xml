@@ -18,10 +18,10 @@
   <url>http://maven.apache.org</url>
 
   <modules>
-    <module>../composer-facade</module>
-    <module>../composition-service</module>
-    <module>../composer-api</module>
-    <module>../composer-util</module>
+    <module>composer-v1-facade</module>
+    <module>composer-v1-composition-service</module>
+    <module>composer-v1-composer-api</module>
+    <module>composer-v1-composer-util</module>
   </modules>
 
 </project>
