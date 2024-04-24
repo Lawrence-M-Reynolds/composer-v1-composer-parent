@@ -6,5 +6,6 @@
     <mapping directory="$PROJECT_DIR$/composer-v1-composer-util" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/composer-v1-composition-service" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/composer-v1-facade" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/composer-v1-generator-service" vcs="Git" />
   </component>
 </project>

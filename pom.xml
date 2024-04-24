@@ -19,6 +19,7 @@
   <modules>
     <module>composer-v1-facade</module>
     <module>composer-v1-composition-service</module>
+    <module>composer-v1-generator-service</module>
     <module>composer-v1-composer-api</module>
     <module>composer-v1-composer-util</module>
   </modules>
