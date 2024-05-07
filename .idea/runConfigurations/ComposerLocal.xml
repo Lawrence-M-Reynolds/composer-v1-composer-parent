@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="ComposerLocal" type="CompoundRunConfigurationType">
     <toRun name="ComposerFacadeApplication" type="SpringBootApplicationConfigurationType" />
-    <toRun name="CompositionServiceApplication" type="SpringBootApplicationConfigurationType" />
+    <toRun name="CompositionServiceLocalRunner" type="SpringBootApplicationConfigurationType" />
     <toRun name="GeneratorServiceLocalRunner" type="SpringBootApplicationConfigurationType" />
     <method v="2" />
   </configuration>
