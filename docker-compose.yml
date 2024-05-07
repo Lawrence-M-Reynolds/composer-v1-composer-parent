@@ -1,16 +1,49 @@
-version: '2.1'
+version: '2.26.1'
 
 services:
   facade:
-    build: composer-v1-facade
+    build: .
     mem_limit: 512m
     ports:
       - "8080:8080"
+    networks:
+      - microservices
     environment:
       - SPRING_PROFILES_ACTIVE=docker
 
   composition:
-    build: composer-v1-composition-service
+    build: .
     mem_limit: 512m
+    networks:
+      - composition
+      - microservices
+    depends_on:
+      database:
+        condition: service_healthy
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+      - MYSQL_HOST=database
+
+  database:
+    image: mysql:8.0.37
+    container_name: mysql-composer-composition
+    ports:
+      - "3306:3306"
+    networks:
+      - composition
+    environment:
+      - MYSQL_DATABASE=db_composition
+      - MYSQL_USER=test_user
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=admin
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+      interval: 5s
+      timeout: 5s
+      retries: 100
+    volumes:
+      - .\composer-v1-composition-service\DbData:/var/lib/mysql
+
+networks:
+  composition: {}
+  microservices: {}
