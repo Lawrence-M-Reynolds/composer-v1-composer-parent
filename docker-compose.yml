@@ -2,35 +2,36 @@ version: '2.26.1'
 
 services:
   facade:
-    build: .
+    build: .\composer-v1-facade
     mem_limit: 512m
     ports:
       - "8080:8080"
     networks:
       - microservices
+    hostname: facade
     environment:
       - SPRING_PROFILES_ACTIVE=docker
 
-  composition:
-    build: .
+  composition_microservice:
+    build: .\composer-v1-composition-service
     mem_limit: 512m
     networks:
-      - composition
+      - composition_network
       - microservices
+    hostname: composition-microservice
     depends_on:
-      database:
+      composition_database:
         condition: service_healthy
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - MYSQL_HOST=database
+      - MYSQL_HOST=composition-database
 
-  database:
+  composition_database:
     image: mysql:8.0.37
     container_name: mysql-composer-composition
-    ports:
-      - "3306:3306"
     networks:
-      - composition
+      - composition_network
+    hostname: composition-database
     environment:
       - MYSQL_DATABASE=db_composition
       - MYSQL_USER=test_user
@@ -42,8 +43,41 @@ services:
       timeout: 5s
       retries: 100
     volumes:
-      - .\composer-v1-composition-service\DbData:/var/lib/mysql
+      - .\DbData\compositionDb:/var/lib/mysql
+
+  generator_microservice:
+    build: .\composer-v1-generator-service
+    mem_limit: 512m
+    networks:
+      - generator_network
+      - microservices
+    hostname: generator-microservice
+    depends_on:
+      generator_database:
+        condition: service_healthy
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - DB_HOST=generator-database
+
+  generator_database:
+    image: mongo:7.0.9
+    container_name: generator-database
+    networks:
+      - generator_network
+    hostname: generator-database
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+    healthcheck:
+      test: mongosh --host localhost -u $${MONGO_INITDB_ROOT_USERNAME} -p $${MONGO_INITDB_ROOT_PASSWORD} --authenticationDatabase admin --eval "printjson(db.serverStatus().ok)"
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+    volumes:
+      - .\DbData\generatorDb:/data/db
 
 networks:
-  composition: {}
+  composition_network: {}
+  generator_network: {}
   microservices: {}

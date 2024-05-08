@@ -1,38 +1,18 @@
-# maven build
-````
-mvn clean install
-````
-# Running in Docker Containers
-## Individual containers
-### First build the image
-(Starting from the root/parent project.)
-#### Facade
-````
-cd composer-v1-facade
+# Running locally with testcontainers
+Use the **ComposerLocal** run configuration. Data will be lost after a restart.
 
-docker build -t lreynolds/composer-v1-facade:latest .
-````
-#### Composition
-````
-cd composer-v1-composition-service
+# Run each service in a docker container
+Data is persisted after a restart.
 
-docker build -t lreynolds/composer-v1-composition:latest .
+To clear existing data.
 ````
-#### Generator
+rmdir .\DbData
 ````
-cd composer-v1-generator-service
-
-docker build -t lreynolds/composer-v1-generator:latest .
+## maven build
 ````
-
-### Run the container from the image
+mvn clean install -DskipTests
 ````
-docker run lreynolds/composer-v1-facade:latest
-docker run lreynolds/composer-v1-composition:latest
-docker run lreynolds/composer-v1-generator:latest
-````
-
-## All Containers
+## Build the docker containers
 ### Start all containers
 ````
 docker-compose up -d
