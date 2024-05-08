@@ -13,3 +13,6 @@
 [submodule "composer-v1-generator-service"]
 	path = composer-v1-generator-service
 	url = https://github.com/Lawrence-M-Reynolds/composer-v1-generator-service.git
+[submodule "composer-v1-evaluator-service"]
+	path = composer-v1-evaluator-service
+	url = https://github.com/Lawrence-M-Reynolds/composer-v1-evaluator-service.git

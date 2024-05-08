@@ -7,6 +7,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/generator-service/pom.xml" />
         <option value="$PROJECT_DIR$/composer-v1-generator-service/pom.xml" />
+        <option value="$PROJECT_DIR$/composer-v1-evaluator-service/pom.xml" />
       </list>
     </option>
   </component>
