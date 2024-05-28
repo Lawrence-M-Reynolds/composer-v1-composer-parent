@@ -1,0 +1,40 @@
+
+### Get all compositions.
+GET http://localhost:{{facade-port}}/composer
+Accept: application/json
+
+### Get composition.
+
+GET http://localhost:{{facade-port}}/composer/3
+Accept: application/json
+
+### Get Generated Count
+
+GET http://localhost:{{facade-port}}/composer/getGeneratedCount/3
+Accept: application/json
+
+### Get Generated Variations
+
+GET http://localhost:{{facade-port}}/composer/getGeneratedVariations/3
+Accept: application/json
+
+### Upload Composition
+
+POST http://localhost:{{facade-port}}/composer/fileUpload
+Content-Type: multipart/form-data; boundary=file-upload-boundary
+
+--file-upload-boundary
+Content-Disposition: form-data; name="file"; filename="file"
+Content-Type: application/octet-stream
+
+< ./test_uploads/CompositionUploadDemo1.json
+--file-upload-boundary--
+
+### Process Composition
+
+POST http://localhost:{{facade-port}}/composer/processComposition
+Content-Type: application/x-www-form-urlencoded
+
+compositionId=3
+
+###

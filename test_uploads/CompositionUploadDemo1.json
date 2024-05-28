@@ -1,0 +1,13 @@
+{
+  "id": null,
+  "name": "testComposition",
+  "tracks": [
+    {
+      "id": null,
+      "trackNumber": 0,
+      "name": "Track 1",
+      "midiNotes": "[1,5,3,8,5]"
+    }
+  ]
+}
+
