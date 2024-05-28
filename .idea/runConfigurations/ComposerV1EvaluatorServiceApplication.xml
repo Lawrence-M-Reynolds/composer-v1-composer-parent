@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ComposerV1EvaluatorServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <module name="composer-evaluator" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.reynolds.composer.v1.composerv1evaluatorservice.ComposerV1EvaluatorServiceApplication" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
