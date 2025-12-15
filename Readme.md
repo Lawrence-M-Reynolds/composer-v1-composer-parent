@@ -1,7 +1,9 @@
 # Cloning Sub-modules
 Once this parent project has been cloned you can clone the sub-modules using:
 
+````
 git submodule update --init --recursive
+````
 
 # Running locally with testcontainers
 Use the **ComposerLocal** run configuration. Data will be lost after a restart.
